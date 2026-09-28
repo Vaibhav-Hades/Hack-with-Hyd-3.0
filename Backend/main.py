@@ -1,10 +1,5 @@
-from fastapi import FastAPI
+from app.main import app
 
-app = FastAPI(title="RESOLVE Backend API")
-
-@app.get("/health")
-async def health_check():
-    """Simple health check endpoint used by deployment platforms."""
-    return {"status": "ok"}
-
-# Future endpoints will be defined in separate router modules according to API_CONTRACT.md.
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
